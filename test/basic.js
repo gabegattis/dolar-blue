@@ -9,7 +9,8 @@ describe('exchange rates', function(){
 
         
         it('should return current dolar blue BUY and SELL rate, and a datetime', function(done){
-            dolarblue.getData(function(data) {
+            dolarblue.getData(function(err, data) {
+                assert.ok(!err);
                 assert.ok( data.buy > 0);
                 assert.ok( data.sell > 0);
 
@@ -25,7 +26,8 @@ describe('exchange rates', function(){
 
     describe('getData({src:LaNacion})', function(){
         it('should return current dolar blue BUY and SELL rate, and a datetime', function(done){
-            dolarblue.getData({src:'LaNacion'}, function(data) {
+            dolarblue.getData({src:'LaNacion'}, function(err, data) {
+                assert.ok(!err);
                 assert.ok( data.buy > 0);
                 assert.ok( data.sell > 0);
 
@@ -38,27 +40,11 @@ describe('exchange rates', function(){
             });
         });
     });
-
-    describe.skip('getData({src:DolarBlue})', function(){
-        it('should return current dolar blue BUY and SELL rate, and a datetime', function(done){
-            dolarblue.getData({src:'DolarBlue'}, function(data) {
-                assert.ok( data.buy > 0);
-                assert.ok( data.sell > 0);
-
-
-                var d = data.datetime;
-                assert.ok( d > new Date(0) );
-                var before =  new Date('2013-12-16 18:00:00');
-                assert.ok( d > before);
-                done();
-            });
-        });
-    });
-
 
     describe('getData({src:Bluelytics})', function(){
         it('should return current dolar blue BUY and SELL rate, and a datetime', function(done){
-            dolarblue.getData({src:'Bluelytics'}, function(data) {
+            dolarblue.getData({src:'Bluelytics'}, function(err, data) {
+                assert.ok(!err);
                 assert.ok( data.buy > 0);
                 assert.ok( data.sell > 0);
 
@@ -75,12 +61,11 @@ describe('exchange rates', function(){
 
     describe('getData({src:ERROR})', function(){
         it('should throw error', function(done){
-            try {
-              dolarblue.getData({src:'ERROR'}, done);
-            } catch (e) { 
-                assert.ok( e );
+            dolarblue.getData({src:'ERROR'}, function(err, data) {
+                assert.ok(err === 'Unknown source provided: ERROR');
+                assert.ok(!data);
                 done();
-            }
+            });
         });
     });
 
