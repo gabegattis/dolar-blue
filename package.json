@@ -1,34 +1,43 @@
 {
-    "name": "dolar-blue",
-    "version": "0.0.8",
-    "private": false,
-    "dependencies": {
-        "json5": "*",
-        "async": "*"
-    },
-    "author": {
-        "name": "Matias Alejo Garcia",
-        "email": "ematiu (a) gmail.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/matiu/dolar-blue.git"
-    },
-    "bugs": {
-        "url": "https://github.com/matiu/dolar-blue/issues"
-    },
-    "homepage": "https://github.com/matiu/dolar-blue",
-    "license": "MIT",
-    "keywords": [
-        "dolar",
-        "dolar blue",
-        "argentina",
-        "pesos",
-        "exchange",
-        "money",
-        "rate"
-    ],
-    "engines": {
-        "node": "*"
-    } 
+  "name": "dolar-blue",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "chai": "*",
+    "nock": "*",
+    "sinon": "*"
+  },
+  "author": {
+    "name": "Matias Alejo Garcia",
+    "email": "ematiu (a) gmail.com",
+    "url": "a"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matiu/dolar-blue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matiu/dolar-blue/issues"
+  },
+  "homepage": "https://github.com/matiu/dolar-blue",
+  "license": "MIT",
+  "keywords": [
+    "dolar",
+    "dolar blue",
+    "argentina",
+    "pesos",
+    "exchange",
+    "money",
+    "rate"
+  ],
+  "engines": {
+    "node": "*"
+  },
+  "readme": "dolar-blue\n==========\n\nAPI to get the *dolar blue* rate in Argentina, from various sources.\n\n\n## Synopsis\n\n``` javascript\nvar dolarblue = require('dolar-blue');\n\ndolarblue(function(data){\n    console.log(data.datetime\": el dolar blue esta a \" + data.buy + \" - \" + data.sell);\n    console.log(\"Debería comprar?\");\n});\n\n```\n\n## API\n\n### dolarblue(callback(data))\n\n*** callback *** \n    argument is an object with 3 members: buy, sell and datetime. Datetime's format is ISO8601 and is suitable for \n``` javascript\n    var date = new Date(data.datetime);\n```\n\nThis will try LaNacion first, Bluelytics second, and then dolar-blue.net.\n\nYou can especify a source also:\n```\ndolarblue(src:\"LaNacion\", callback(data))\ndolarblue(src:\"DolarBlue\", callback(data))\ndolarblue(src:\"Bluelytics\", callback(data))\n```\n\n## TODO\nSupport more data sources.\n\n## Licence\nMIT\n",
+  "readmeFilename": "README.md",
+  "description": "dolar-blue ==========",
+  "_id": "dolar-blue@0.1.0",
+  "_shasum": "9242be1361f1200c6a410e3bc5a662abfe53ceb8",
+  "_from": "dolar-blue@",
+  "_resolved": "https://registry.npmjs.org/dolar-blue/-/dolar-blue-0.1.0.tgz"
 }
